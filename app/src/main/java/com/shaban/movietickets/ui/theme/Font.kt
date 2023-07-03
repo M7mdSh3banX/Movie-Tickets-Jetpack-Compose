@@ -6,6 +6,6 @@ import androidx.compose.ui.text.font.FontWeight
 import com.shaban.movietickets.R
 
 val Poppins = FontFamily(
-    Font(resId = R.font.poppins_regular, weight = FontWeight.Normal),
-    Font(resId = R.font.poppins_medium, weight = FontWeight.Medium)
+    Font(resId = R.font.noto_sans_regular, weight = FontWeight.Normal),
+    Font(resId = R.font.noto_sans_medium, weight = FontWeight.Medium)
 )
