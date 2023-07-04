@@ -103,6 +103,7 @@ private fun BookingScreenContent(
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             MovieDescription(description = state.movieDescription)
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            Spacer(modifier = Modifier.weight(1F))
             BookingButton(
                 buttonText = "Booking",
                 painter = painterResource(id = R.drawable.booking_icon),

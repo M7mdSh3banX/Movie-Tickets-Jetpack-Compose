@@ -1,6 +1,7 @@
 package com.shaban.movietickets.composable
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -27,7 +28,8 @@ fun BookingButton(
 ) {
     Button(
         onClick = onClickBooking,
-        colors = ButtonDefaults.buttonColors(PrimaryColor)
+        colors = ButtonDefaults.buttonColors(PrimaryColor),
+        modifier = modifier.padding(bottom = 16.dp)
     ) {
         Icon(
             painter = painter,

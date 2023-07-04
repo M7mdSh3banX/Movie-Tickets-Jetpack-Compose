@@ -45,7 +45,7 @@ fun BookingHeader(
             modifier = modifier
                 .background(
                     shape = CircleShape,
-                    color = Color.White.copy(alpha = 0.5F)
+                    color = Color.White.copy(alpha = 0.4F)
                 )
                 .size(40.dp)
         ) {
@@ -64,14 +64,14 @@ fun BookingHeader(
                 .padding(6.dp)
                 .background(
                     shape = CircleShape,
-                    color = Color.White.copy(alpha = 0.5F)
+                    color = Color.White.copy(alpha = 0.4F)
                 ),
             contentAlignment = Alignment.Center
         ) {
             Row(
                 verticalAlignment = CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(4.dp),
-                modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp)
+                modifier = modifier.padding(vertical = 6.dp, horizontal = 8.dp)
             ) {
                 Icon(
                     painter = painterResource(id = R.drawable.clock_icon),
