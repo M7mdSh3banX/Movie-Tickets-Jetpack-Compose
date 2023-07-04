@@ -43,7 +43,7 @@ fun BookingHeader(
         ) {
             Icon(
                 modifier = Modifier,
-                painter = painterResource(id = R.drawable.exit),
+                painter = painterResource(id = R.drawable.exit_icon),
                 contentDescription = "Exit From Booking",
                 tint = Color.White
             )
@@ -61,7 +61,7 @@ fun BookingHeader(
                 horizontalArrangement = Arrangement.spacedBy(4.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.access_time),
+                    painter = painterResource(id = R.drawable.access_time_icon),
                     contentDescription = "content description",
                     modifier = Modifier.size(14.dp),
                     tint = Color.LightGray

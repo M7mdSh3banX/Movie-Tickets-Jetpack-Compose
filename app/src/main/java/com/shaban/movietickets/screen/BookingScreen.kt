@@ -56,9 +56,11 @@ private fun BookingScreenContent(
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1.1f),
+                .weight(1.2f),
             contentAlignment = Alignment.Center
-        ) { }
+        ) {
+            MovieImage(data = state.movieImage)
+        }
     }
 }
 
