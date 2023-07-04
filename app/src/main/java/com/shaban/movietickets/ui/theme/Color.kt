@@ -12,3 +12,5 @@ val Pink40 = Color(0xFF7D5260)
 
 val PrimaryColor = Color(0xFFFD5624)
 val CardBackgroundColor = Color(0xFF9C9183)
+val BookingHeaderBackgroundColor = Color(0xFF273031)
+val WhiteE1 = Color(0xFFE1E1E1)
