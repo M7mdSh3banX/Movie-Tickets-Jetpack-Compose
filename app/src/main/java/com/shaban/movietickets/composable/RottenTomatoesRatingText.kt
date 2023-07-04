@@ -38,7 +38,7 @@ fun RottenTomatoesRatingText(
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun PreviewRottenTomatoesRatingText() {
     RottenTomatoesRatingText(rating = 63, "Rotten Tomatoes")

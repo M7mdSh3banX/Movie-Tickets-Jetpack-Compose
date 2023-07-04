@@ -1,5 +1,6 @@
 package com.shaban.movietickets.composable
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -7,7 +8,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -23,7 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.shaban.movietickets.R
-import com.shaban.movietickets.ui.theme.NotoSans
 
 @Composable
 fun BookingHeader(
@@ -31,7 +33,7 @@ fun BookingHeader(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
@@ -39,10 +41,16 @@ fun BookingHeader(
     ) {
 
         IconButton(
-            onClick = { }
+            onClick = { },
+            modifier = modifier
+                .background(
+                    shape = CircleShape,
+                    color = Color.White.copy(alpha = 0.5F)
+                )
+                .size(40.dp)
         ) {
             Icon(
-                modifier = Modifier,
+                modifier = modifier.size(24.dp),
                 painter = painterResource(id = R.drawable.exit_icon),
                 contentDescription = "Exit From Booking",
                 tint = Color.White
@@ -50,28 +58,32 @@ fun BookingHeader(
         }
 
         Box(
-            modifier = Modifier
+            modifier = modifier
                 .wrapContentSize()
                 .clip(RoundedCornerShape(14.dp))
-                .padding(6.dp),
+                .padding(6.dp)
+                .background(
+                    shape = CircleShape,
+                    color = Color.White.copy(alpha = 0.5F)
+                ),
             contentAlignment = Alignment.Center
         ) {
             Row(
                 verticalAlignment = CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(4.dp)
+                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                modifier = modifier.padding(vertical = 4.dp, horizontal = 8.dp)
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.access_time_icon),
+                    painter = painterResource(id = R.drawable.clock_icon),
                     contentDescription = "content description",
-                    modifier = Modifier.size(14.dp),
+                    modifier = modifier.size(ButtonDefaults.IconSize),
                     tint = Color.LightGray
                 )
                 Text(
                     text = movieDuration,
                     color = Color.White,
-                    fontFamily = NotoSans,
                     fontWeight = FontWeight.Medium,
-                    fontSize = 14.sp,
+                    fontSize = 16.sp,
                     modifier = modifier
                 )
             }

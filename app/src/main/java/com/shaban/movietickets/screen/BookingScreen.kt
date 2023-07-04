@@ -2,6 +2,7 @@ package com.shaban.movietickets.screen
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -18,10 +19,12 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.shaban.movietickets.R
+import com.shaban.movietickets.composable.BookingButton
 import com.shaban.movietickets.composable.BookingHeader
 import com.shaban.movietickets.composable.MovieCastItem
 import com.shaban.movietickets.composable.MovieDescription
@@ -48,28 +51,21 @@ private fun BookingScreenContent(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.fillMaxSize()
     ) {
-        ConstraintLayout(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(1f),
+                .weight(0.4f)
         ) {
-            val playButton = createRef()
-
             MovieImage(data = state.movieImage)
             BookingHeader(movieDuration = state.movieDuration)
-            PlayMovie(
-                modifier = Modifier.constrainAs(playButton) {
-                    top.linkTo(parent.top)
-                    bottom.linkTo(parent.bottom)
-                    start.linkTo(parent.start)
-                    end.linkTo(parent.end)
-                }
-            ) { }
+            Box(modifier = Modifier.align(Alignment.Center)) {
+                PlayMovie {}
+            }
         }
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .weight(1f)
+                .weight(0.6f)
                 .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -106,6 +102,13 @@ private fun BookingScreenContent(
             }
             Spacer(modifier = Modifier.padding(vertical = 4.dp))
             MovieDescription(description = state.movieDescription)
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            BookingButton(
+                buttonText = "Booking",
+                painter = painterResource(id = R.drawable.booking_icon),
+                onClickBooking = { /*TODO*/ },
+                modifier = Modifier
+            )
         }
     }
 }
