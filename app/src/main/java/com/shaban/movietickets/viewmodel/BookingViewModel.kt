@@ -1,6 +1,7 @@
 package com.shaban.movietickets.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.shaban.movietickets.viewmodel.uistate.BookingUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,6 +16,7 @@ class BookingViewModel @Inject constructor() : ViewModel() {
     init {
         getMovieImage()
         getMovieDuration()
+        getMovieName()
     }
 
     private fun getMovieImage() =
@@ -22,4 +24,7 @@ class BookingViewModel @Inject constructor() : ViewModel() {
 
     private fun getMovieDuration() =
         _state.update { it.copy(movieDuration = "2h 23m") }
+
+    private fun getMovieName() =
+        _state.update { it.copy(movieName = "Fantastic Beasts: The Secrets of Dumbledore") }
 }

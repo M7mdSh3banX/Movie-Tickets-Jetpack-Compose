@@ -1,4 +1,4 @@
-package com.shaban.movietickets.viewmodel
+package com.shaban.movietickets.viewmodel.uistate
 
 data class BookingUiState(
     val movieImage: String = "",
