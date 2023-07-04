@@ -14,6 +14,7 @@ import com.shaban.movietickets.ui.theme.PrimaryColor
 @Composable
 fun MovieImage(
     data: String,
+    modifier: Modifier = Modifier
 ) {
     val painter = rememberAsyncImagePainter(model = data)
     val painterState = painter.state
@@ -22,7 +23,7 @@ fun MovieImage(
         painter = painter,
         contentDescription = "Movie Image",
         contentScale = ContentScale.Crop,
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     )
 
     /*if (painterState is AsyncImagePainter.State.Loading) {
