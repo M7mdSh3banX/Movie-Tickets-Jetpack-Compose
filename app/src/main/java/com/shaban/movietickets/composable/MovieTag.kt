@@ -8,13 +8,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.shaban.movietickets.ui.theme.BorderColor
+import com.shaban.movietickets.ui.theme.WhiteE1
 import com.shaban.movietickets.ui.theme.NotoSans
 
 @Composable
@@ -25,8 +24,7 @@ fun MovieTag(
     Box(modifier.padding(horizontal = 4.dp)) {
         Box(
             contentAlignment = Alignment.Center,
-            modifier = modifier
-                .border(width = 1.dp, color = BorderColor, shape = CircleShape)
+            modifier = modifier.border(width = 1.dp, color = WhiteE1, shape = CircleShape)
         ) {
             Text(
                 text = name,

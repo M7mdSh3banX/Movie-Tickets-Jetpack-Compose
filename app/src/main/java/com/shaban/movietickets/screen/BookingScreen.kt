@@ -3,10 +3,14 @@ package com.shaban.movietickets.screen
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -19,6 +23,8 @@ import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.composable.BookingHeader
+import com.shaban.movietickets.composable.MovieCastItem
+import com.shaban.movietickets.composable.MovieDescription
 import com.shaban.movietickets.composable.MovieImage
 import com.shaban.movietickets.composable.MovieName
 import com.shaban.movietickets.composable.MovieTag
@@ -29,9 +35,7 @@ import com.shaban.movietickets.viewmodel.BookingViewModel
 import com.shaban.movietickets.viewmodel.uistate.BookingUiState
 
 @Composable
-fun BookingScreen(
-    viewModel: BookingViewModel = hiltViewModel()
-) {
+fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     BookingScreenContent(state = state)
 }
@@ -70,7 +74,9 @@ private fun BookingScreenContent(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 24.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 16.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -80,12 +86,26 @@ private fun BookingScreenContent(
             }
             MovieName(name = "Fantastic Beasts: The Secrets of Dumbledore")
             Row(
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.Center,
             ) {
                 MovieTag(name = "Fantasy")
                 MovieTag(name = "Adventure")
             }
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            LazyRow(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                contentPadding = PaddingValues(horizontal = 16.dp)
+            ) {
+                items(state.movieCast) { image ->
+                    MovieCastItem(data = image)
+                }
+            }
+            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            MovieDescription(description = state.movieDescription)
         }
     }
 }

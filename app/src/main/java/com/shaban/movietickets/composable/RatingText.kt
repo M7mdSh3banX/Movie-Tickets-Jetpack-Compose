@@ -49,7 +49,7 @@ fun RatingText(
     }
 }
 
-@Preview()
+@Preview
 @Composable
 fun PreviewRatingText() {
     RatingText(rating = 6.8, "IMDb")

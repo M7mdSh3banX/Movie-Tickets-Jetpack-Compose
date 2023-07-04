@@ -20,7 +20,7 @@ fun MovieName(
     modifier: Modifier = Modifier
 ) {
     Box(
-        modifier = modifier,
+        modifier = modifier.padding(horizontal = 16.dp, vertical = 4.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -29,7 +29,7 @@ fun MovieName(
             fontFamily = NotoSans,
             fontWeight = FontWeight.Medium,
             fontSize = 24.sp,
-            modifier = modifier.padding(16.dp),
+            modifier = modifier,
             textAlign = TextAlign.Center
         )
     }
