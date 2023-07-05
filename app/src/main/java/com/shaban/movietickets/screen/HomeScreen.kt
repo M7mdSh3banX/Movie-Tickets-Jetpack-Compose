@@ -17,13 +17,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.shaban.movietickets.R
 import com.shaban.movietickets.composable.CustomChip
 import com.shaban.movietickets.composable.MovieCardPager
 import com.shaban.movietickets.composable.MovieDurationComponent
 import com.shaban.movietickets.composable.MovieImage
+import com.shaban.movietickets.composable.MovieImageBackground
 import com.shaban.movietickets.composable.MovieName
 import com.shaban.movietickets.composable.MovieTag
 import com.shaban.movietickets.viewmodel.HomeViewModel
@@ -48,7 +51,7 @@ fun HomeContent(
                 .fillMaxSize()
                 .weight(0.6f)
         ) {
-            MovieImage(data = state.movieImages[1], modifier = Modifier.blur(25.dp))
+            MovieImageBackground(data = state.movieImages[1], color = Color.White)
             Column {
                 Spacer(modifier = Modifier.height(16.dp))
                 Row(
@@ -62,7 +65,6 @@ fun HomeContent(
                 MovieCardPager(data = state.movieImages)
             }
         }
-        Spacer(modifier = Modifier.height(16.dp))
         Column(
             modifier = Modifier
                 .fillMaxWidth()

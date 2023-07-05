@@ -22,7 +22,7 @@ import com.shaban.movietickets.ui.theme.PrimaryColor
 fun CustomChip(
     text: String,
     isSelected: Boolean = false,
-    onSelectedChipChanged: (String) -> Unit,
+    onSelectedChipChanged: (Boolean) -> Unit,
 ) {
     Surface(
         modifier = Modifier.padding(end = 8.dp),
@@ -36,7 +36,7 @@ fun CustomChip(
                 .toggleable(
                     value = isSelected,
                     onValueChange = {
-                        onSelectedChipChanged(text)
+                        onSelectedChipChanged(isSelected)
                     }
                 )
         ) {
