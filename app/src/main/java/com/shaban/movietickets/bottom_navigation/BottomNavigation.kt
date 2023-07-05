@@ -1,4 +1,4 @@
-package com.shaban.movietickets.bottomnav
+package com.shaban.movietickets.bottom_navigation
 
 import com.shaban.movietickets.R
 
