@@ -1,4 +1,4 @@
-package com.shaban.movietickets.viewmodel.uistate
+package com.shaban.movietickets.screen.home
 
 data class HomeUiState(
     val movieName: String = "",

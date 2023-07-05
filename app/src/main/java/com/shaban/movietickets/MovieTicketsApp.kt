@@ -4,8 +4,7 @@ import android.annotation.SuppressLint
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import com.shaban.movietickets.screen.BookingScreen
-import com.shaban.movietickets.screen.HomeScreen
+import com.shaban.movietickets.screen.home.HomeScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)

@@ -2,14 +2,12 @@ package com.shaban.movietickets.composable
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
@@ -32,11 +30,11 @@ import kotlin.math.absoluteValue
 fun MovieCardPager(
     data: List<String>,
     modifier: Modifier = Modifier,
+    state: PagerState
 ) {
-    val pagerState = rememberPagerState(initialPage = 1)
     HorizontalPager(
         pageCount = data.size,
-        state = pagerState,
+        state = state,
         modifier = modifier.wrapContentSize(),
         contentPadding = PaddingValues(horizontal = 48.dp, vertical = 16.dp)
     ) { pageIndex ->
@@ -45,7 +43,7 @@ fun MovieCardPager(
             modifier = modifier
                 .graphicsLayer {
                     val pageOffset =
-                        ((pagerState.currentPage - pageIndex) + pagerState.currentPageOffsetFraction).absoluteValue
+                        ((state.currentPage - pageIndex) + state.currentPageOffsetFraction).absoluteValue
                     lerp(
                         start = ScaleFactor(0.85F, 0.85F),
                         stop = ScaleFactor(1F, 1F),
@@ -74,5 +72,5 @@ fun MovieCardPager(
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewMovieCard() {
-    MovieCardPager(emptyList())
+
 }

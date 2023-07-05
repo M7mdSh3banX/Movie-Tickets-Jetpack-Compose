@@ -1,5 +1,6 @@
-package com.shaban.movietickets.screen
+package com.shaban.movietickets.screen.home
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -9,38 +10,38 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
-import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.shaban.movietickets.R
 import com.shaban.movietickets.composable.CustomChip
 import com.shaban.movietickets.composable.MovieCardPager
 import com.shaban.movietickets.composable.MovieDurationComponent
-import com.shaban.movietickets.composable.MovieImage
 import com.shaban.movietickets.composable.MovieImageBackground
 import com.shaban.movietickets.composable.MovieName
 import com.shaban.movietickets.composable.MovieTag
-import com.shaban.movietickets.viewmodel.HomeViewModel
-import com.shaban.movietickets.viewmodel.uistate.HomeUiState
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
-    HomeContent(state = state)
+    val pagerState = rememberPagerState(initialPage = 1)
+
+    HomeContent(state = state, pagerState = pagerState)
 }
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeContent(
-    state: HomeUiState
+    state: HomeUiState,
+    pagerState: PagerState
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -51,7 +52,10 @@ fun HomeContent(
                 .fillMaxSize()
                 .weight(0.6f)
         ) {
-            MovieImageBackground(data = state.movieImages[1], color = Color.White)
+            MovieImageBackground(
+                data = state.movieImages[pagerState.currentPage],
+                color = Color.White
+            )
             Column {
                 Spacer(modifier = Modifier.height(16.dp))
                 Row(
@@ -62,7 +66,7 @@ fun HomeContent(
                     CustomChip(text = "Now Showing", onSelectedChipChanged = {}, isSelected = true)
                 }
                 Spacer(modifier = Modifier.height(16.dp))
-                MovieCardPager(data = state.movieImages)
+                MovieCardPager(data = state.movieImages, state = pagerState)
             }
         }
         Column(

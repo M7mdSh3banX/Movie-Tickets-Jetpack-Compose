@@ -1,7 +1,6 @@
-package com.shaban.movietickets.viewmodel
+package com.shaban.movietickets.screen.home
 
 import androidx.lifecycle.ViewModel
-import com.shaban.movietickets.viewmodel.uistate.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

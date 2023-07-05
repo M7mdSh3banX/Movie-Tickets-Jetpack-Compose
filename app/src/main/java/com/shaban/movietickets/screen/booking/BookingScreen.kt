@@ -1,4 +1,4 @@
-package com.shaban.movietickets.screen
+package com.shaban.movietickets.screen.booking
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.layout.Arrangement
@@ -34,8 +34,6 @@ import com.shaban.movietickets.composable.MovieTag
 import com.shaban.movietickets.composable.PlayMovie
 import com.shaban.movietickets.composable.RatingText
 import com.shaban.movietickets.composable.RottenTomatoesRatingText
-import com.shaban.movietickets.viewmodel.BookingViewModel
-import com.shaban.movietickets.viewmodel.uistate.BookingUiState
 
 @Composable
 fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {
