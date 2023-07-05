@@ -13,6 +13,7 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,6 +41,7 @@ fun MovieCardPager(
         contentPadding = PaddingValues(horizontal = 48.dp, vertical = 16.dp)
     ) { pageIndex ->
         Card(
+            colors = CardDefaults.cardColors(Color.Transparent),
             modifier = modifier
                 .graphicsLayer {
                     val pageOffset =

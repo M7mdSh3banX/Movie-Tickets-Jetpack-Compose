@@ -17,7 +17,6 @@ fun MovieImage(
     modifier: Modifier = Modifier
 ) {
     val painter = rememberAsyncImagePainter(model = data)
-    val painterState = painter.state
 
     Image(
         painter = painter,
@@ -25,8 +24,4 @@ fun MovieImage(
         contentScale = ContentScale.Crop,
         modifier = modifier.fillMaxWidth()
     )
-
-    /*if (painterState is AsyncImagePainter.State.Loading) {
-        CircularProgressIndicator(color = PrimaryColor)
-    }*/
 }
