@@ -116,7 +116,7 @@ fun TicketsContent(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                TicketDetails(price = 100.0, numberOfTickets = 4)
+                TicketDetails(price = state.price, numberOfTickets = state.numberOfTickets)
                 BookingButton(
                     buttonText = "Buy Tickets",
                     painter = painterResource(id = R.drawable.booking_icon),

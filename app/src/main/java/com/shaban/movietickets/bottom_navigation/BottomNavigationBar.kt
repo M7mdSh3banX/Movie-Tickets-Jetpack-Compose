@@ -13,7 +13,6 @@ import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.shaban.movietickets.extension.AddItem
 
 @Composable
 fun BottomNavigationBar(navController: NavHostController) {

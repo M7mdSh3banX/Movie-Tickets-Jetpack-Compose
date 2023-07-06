@@ -15,22 +15,23 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
     init {
         getTicketDate()
         getTicketTime()
+        getTicketDetails()
     }
 
     private fun getTicketDate() {
         _state.update {
             it.copy(
                 ticketDate = listOf(
-                    TicketDateChipUiState(day = 14, dayName = "Thu", chipState = false),
-                    TicketDateChipUiState(day = 15, dayName = "Fri", chipState = false),
-                    TicketDateChipUiState(day = 16, dayName = "Sat", chipState = false),
-                    TicketDateChipUiState(day = 17, dayName = "Sun", chipState = false),
-                    TicketDateChipUiState(day = 18, dayName = "Mon", chipState = false),
-                    TicketDateChipUiState(day = 19, dayName = "Tue", chipState = false),
-                    TicketDateChipUiState(day = 20, dayName = "Wed", chipState = false),
-                    TicketDateChipUiState(day = 21, dayName = "Thu", chipState = false),
-                    TicketDateChipUiState(day = 22, dayName = "Fri", chipState = false),
-                    TicketDateChipUiState(day = 23, dayName = "Sat", chipState = false),
+                    TicketDateChipUiState(day = 14, dayName = "Thu"),
+                    TicketDateChipUiState(day = 15, dayName = "Fri"),
+                    TicketDateChipUiState(day = 16, dayName = "Sat"),
+                    TicketDateChipUiState(day = 17, dayName = "Sun"),
+                    TicketDateChipUiState(day = 18, dayName = "Mon"),
+                    TicketDateChipUiState(day = 19, dayName = "Tue"),
+                    TicketDateChipUiState(day = 20, dayName = "Wed"),
+                    TicketDateChipUiState(day = 21, dayName = "Thu"),
+                    TicketDateChipUiState(day = 22, dayName = "Fri"),
+                    TicketDateChipUiState(day = 23, dayName = "Sat"),
                 )
             )
         }
@@ -40,16 +41,16 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
         _state.update {
             it.copy(
                 ticketTime = listOf(
-                    TicketTimeChipUiState(time = "10:00", chipState = false),
-                    TicketTimeChipUiState(time = "12:30", chipState = false),
-                    TicketTimeChipUiState(time = "15:30", chipState = false),
-                    TicketTimeChipUiState(time = "18:30", chipState = false),
-                    TicketTimeChipUiState(time = "21:30", chipState = false),
-                    TicketTimeChipUiState(time = "22:00", chipState = false),
-                    TicketTimeChipUiState(time = "00:00", chipState = false),
-                    TicketTimeChipUiState(time = "01:00", chipState = false),
-                    TicketTimeChipUiState(time = "02:00", chipState = false),
-                    TicketTimeChipUiState(time = "03:00", chipState = false),
+                    TicketTimeChipUiState(time = "10:00"),
+                    TicketTimeChipUiState(time = "12:30"),
+                    TicketTimeChipUiState(time = "15:30"),
+                    TicketTimeChipUiState(time = "18:30"),
+                    TicketTimeChipUiState(time = "21:30"),
+                    TicketTimeChipUiState(time = "22:00"),
+                    TicketTimeChipUiState(time = "00:00"),
+                    TicketTimeChipUiState(time = "01:00"),
+                    TicketTimeChipUiState(time = "02:00"),
+                    TicketTimeChipUiState(time = "03:00"),
                 )
             )
         }
@@ -78,6 +79,15 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
                 }
             }
             currentState.copy(ticketTime = updatedDates)
+        }
+    }
+
+    private fun getTicketDetails() {
+        _state.update {
+            it.copy(
+                price = 100.0,
+                numberOfTickets = 4
+            )
         }
     }
 }

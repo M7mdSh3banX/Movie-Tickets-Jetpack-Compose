@@ -13,10 +13,10 @@ data class TicketsUiState(
 data class TicketDateChipUiState(
     val day: Int = 1,
     val dayName: String = "",
-    val chipState: Boolean
+    val chipState: Boolean = false
 )
 
 data class TicketTimeChipUiState(
     val time: String = "",
-    val chipState: Boolean
+    val chipState: Boolean = false
 )

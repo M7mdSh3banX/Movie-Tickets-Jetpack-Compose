@@ -1,4 +1,4 @@
-package com.shaban.movietickets.extension
+package com.shaban.movietickets.bottom_navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -22,7 +22,6 @@ import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.shaban.movietickets.bottom_navigation.BottomNavigation
 import com.shaban.movietickets.ui.theme.PrimaryColor
 
 @Composable
