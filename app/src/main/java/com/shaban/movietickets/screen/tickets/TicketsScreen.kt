@@ -28,6 +28,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
+import com.shaban.movietickets.composable.CinemaCover
 import com.shaban.movietickets.composable.IconWithTransparentBackground
 import com.shaban.movietickets.composable.TicketDateItemChip
 
@@ -63,15 +64,7 @@ fun TicketsContent(
         ) {
             IconWithTransparentBackground(icon = R.drawable.exit_icon)
             Spacer(modifier = Modifier.height(8.dp))
-            Image(
-                painter = painterResource(id = R.drawable.cinema_cover),
-                contentDescription = "Movie Image",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .alpha(0.7F)
-            )
-
+            CinemaCover(painter = painterResource(id = R.drawable.cinema_cover))
         }
         Spacer(modifier = Modifier.weight(1F))
         Column(

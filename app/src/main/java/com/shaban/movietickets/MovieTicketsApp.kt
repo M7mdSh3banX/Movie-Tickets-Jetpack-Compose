@@ -18,7 +18,7 @@ import com.shaban.movietickets.screen.tickets.TicketsScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieTicketsApp() {
-    /*val navController = rememberNavController()
+    val navController = rememberNavController()
 
     Scaffold(
         //modifier = Modifier.fillMaxSize(),
@@ -29,7 +29,7 @@ fun MovieTicketsApp() {
             .padding(it)) {
             BottomNavGraph(navController = navController)
         }
-    }*/
+    }
 
-    HomeScreen()
+    // HomeScreen()
 }
