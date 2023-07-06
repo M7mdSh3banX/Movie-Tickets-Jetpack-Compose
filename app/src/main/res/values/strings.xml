@@ -4,4 +4,8 @@
     <string name="rotten_tomatoes">Rotten Tomatoes</string>
     <string name="ign">IGN</string>
     <string name="booking">Booking</string>
+    <string name="available">Available</string>
+    <string name="taken">Taken</string>
+    <string name="selected">Selected</string>
+    <string name="buy_tickets">Buy Tickets</string>
 </resources>

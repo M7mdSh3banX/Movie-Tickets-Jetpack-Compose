@@ -24,7 +24,7 @@ fun BottomNavGraph(navController: NavHostController) {
             TicketsScreen()
         }
         composable(route = BottomNavigation.Profile.route) {
-            BookingScreen()
+
         }
     }
 }

@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -21,17 +20,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
-import com.shaban.movietickets.composable.component.CustomButton
 import com.shaban.movietickets.composable.component.CinemaCover
+import com.shaban.movietickets.composable.component.CustomButton
 import com.shaban.movietickets.composable.component.IconWithTransparentBackground
 import com.shaban.movietickets.composable.component.TicketDateItemChip
 import com.shaban.movietickets.composable.component.TicketDetails
 import com.shaban.movietickets.composable.component.TicketSeatState
 import com.shaban.movietickets.composable.component.TicketTimeItemChip
+import com.shaban.movietickets.composable.spacing.SpacerVertical16
+import com.shaban.movietickets.composable.spacing.SpacerVertical24
+import com.shaban.movietickets.composable.spacing.SpacerVertical8
 import com.shaban.movietickets.ui.theme.PrimaryColor
 import com.shaban.movietickets.ui.theme.SeatColor
 
@@ -66,16 +69,16 @@ fun TicketsContent(
                 .padding(16.dp),
         ) {
             IconWithTransparentBackground(icon = R.drawable.exit_icon)
-            Spacer(modifier = Modifier.height(8.dp))
+            SpacerVertical8()
             CinemaCover(painter = painterResource(id = R.drawable.cinema_cover))
             Spacer(modifier = Modifier.weight(1F))
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                TicketSeatState(text = "Available", color = White)
-                TicketSeatState(text = "Taken", color = SeatColor)
-                TicketSeatState(text = "Selected", color = PrimaryColor)
+                TicketSeatState(text = stringResource(R.string.available), color = White)
+                TicketSeatState(text = stringResource(R.string.taken), color = SeatColor)
+                TicketSeatState(text = stringResource(R.string.selected), color = PrimaryColor)
             }
         }
         Column(
@@ -85,7 +88,7 @@ fun TicketsContent(
                 .background(White, shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Spacer(modifier = Modifier.height(24.dp))
+            SpacerVertical24()
             LazyRow(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -98,7 +101,7 @@ fun TicketsContent(
                     )
                 }
             }
-            Spacer(modifier = Modifier.height(24.dp))
+            SpacerVertical24()
             LazyRow(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -121,13 +124,13 @@ fun TicketsContent(
             ) {
                 TicketDetails(price = state.price, numberOfTickets = state.numberOfTickets)
                 CustomButton(
-                    buttonText = "Buy Tickets",
+                    buttonText = stringResource(R.string.buy_tickets),
                     painter = painterResource(id = R.drawable.booking_icon),
-                    onClickBooking = { /*TODO*/ },
+                    onClickBooking = { },
                     modifier = Modifier
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
+            SpacerVertical16()
         }
     }
 }
