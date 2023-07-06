@@ -1,4 +1,4 @@
-package com.shaban.movietickets.composable
+package com.shaban.movietickets.composable.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxWidth

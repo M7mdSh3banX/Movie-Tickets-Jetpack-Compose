@@ -18,6 +18,8 @@ class BookingViewModel @Inject constructor() : ViewModel() {
         getMovieName()
         getCastImages()
         getMovieDescription()
+        getMovieRates()
+        getMovieTags()
     }
 
     private fun getMovieImage() =
@@ -49,5 +51,19 @@ class BookingViewModel @Inject constructor() : ViewModel() {
                 )
             )
         }
+    }
+
+    private fun getMovieRates() {
+        _state.update {
+            it.copy(
+                imdbRating = 6.8,
+                rottenTomatoesRating = 63,
+                ignRating = 4.0
+            )
+        }
+    }
+
+    private fun getMovieTags() {
+        _state.update { it.copy(movieTags = listOf("Fantasy", "Adventure")) }
     }
 }

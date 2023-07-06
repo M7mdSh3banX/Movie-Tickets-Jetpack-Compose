@@ -1,7 +1,6 @@
-package com.shaban.movietickets.composable
+package com.shaban.movietickets.composable.component
 
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -21,7 +20,7 @@ import com.shaban.movietickets.R
 import com.shaban.movietickets.ui.theme.PrimaryColor
 
 @Composable
-fun BookingButton(
+fun CustomButton(
     buttonText: String,
     painter: Painter,
     onClickBooking: () -> Unit,
@@ -51,7 +50,7 @@ fun BookingButton(
 @Preview
 @Composable
 fun PreviewBookingButton() {
-    BookingButton(
+    CustomButton(
         buttonText = "Booking",
         onClickBooking = { /*TODO*/ },
         painter = painterResource(id = R.drawable.booking_icon)

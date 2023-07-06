@@ -90,4 +90,8 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
             )
         }
     }
+
+    private fun getTicketSeatState() {
+
+    }
 }

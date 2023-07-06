@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -22,22 +21,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
-import com.shaban.movietickets.composable.BookingButton
-import com.shaban.movietickets.composable.CinemaCover
-import com.shaban.movietickets.composable.IconWithTransparentBackground
-import com.shaban.movietickets.composable.RatingText
-import com.shaban.movietickets.composable.RottenTomatoesRatingText
-import com.shaban.movietickets.composable.TicketDateItemChip
-import com.shaban.movietickets.composable.TicketDetails
-import com.shaban.movietickets.composable.TicketTimeItemChip
-import com.shaban.movietickets.ui.theme.NotoSans
+import com.shaban.movietickets.composable.component.CustomButton
+import com.shaban.movietickets.composable.component.CinemaCover
+import com.shaban.movietickets.composable.component.IconWithTransparentBackground
+import com.shaban.movietickets.composable.component.TicketDateItemChip
+import com.shaban.movietickets.composable.component.TicketDetails
+import com.shaban.movietickets.composable.component.TicketSeatState
+import com.shaban.movietickets.composable.component.TicketTimeItemChip
+import com.shaban.movietickets.ui.theme.PrimaryColor
+import com.shaban.movietickets.ui.theme.SeatColor
 
 @Composable
 fun TicketsScreen(
@@ -59,27 +55,34 @@ fun TicketsContent(
     onClickTimeChip: (TicketTimeChipUiState) -> Unit,
 ) {
     Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
             .background(color = Black)
     ) {
         Column(
             modifier = Modifier
-                .padding(16.dp)
+                .weight(0.7F)
                 .fillMaxWidth()
-                .height(200.dp)
+                .padding(16.dp),
         ) {
             IconWithTransparentBackground(icon = R.drawable.exit_icon)
             Spacer(modifier = Modifier.height(8.dp))
             CinemaCover(painter = painterResource(id = R.drawable.cinema_cover))
+            Spacer(modifier = Modifier.weight(1F))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                TicketSeatState(text = "Available", color = White)
+                TicketSeatState(text = "Taken", color = SeatColor)
+                TicketSeatState(text = "Selected", color = PrimaryColor)
+            }
         }
-        Spacer(modifier = Modifier.weight(1F))
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .background(White, shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                .weight(1F),
+                .weight(0.4F)
+                .fillMaxWidth()
+                .background(White, shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp)),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Spacer(modifier = Modifier.height(24.dp))
@@ -117,7 +120,7 @@ fun TicketsContent(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 TicketDetails(price = state.price, numberOfTickets = state.numberOfTickets)
-                BookingButton(
+                CustomButton(
                     buttonText = "Buy Tickets",
                     painter = painterResource(id = R.drawable.booking_icon),
                     onClickBooking = { /*TODO*/ },

@@ -21,13 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.shaban.movietickets.composable.CustomChip
-import com.shaban.movietickets.composable.MovieCardPager
-import com.shaban.movietickets.composable.MovieDurationComponent
-import com.shaban.movietickets.composable.MovieImageBackground
-import com.shaban.movietickets.composable.MovieName
-import com.shaban.movietickets.composable.MovieTag
-import com.shaban.movietickets.screen.tickets.TicketDateChipUiState
+import com.shaban.movietickets.composable.component.CustomChip
+import com.shaban.movietickets.composable.component.MovieCardPager
+import com.shaban.movietickets.composable.component.MovieDurationComponent
+import com.shaban.movietickets.composable.component.MovieImageBackground
+import com.shaban.movietickets.composable.component.MovieName
+import com.shaban.movietickets.composable.component.MovieTag
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable

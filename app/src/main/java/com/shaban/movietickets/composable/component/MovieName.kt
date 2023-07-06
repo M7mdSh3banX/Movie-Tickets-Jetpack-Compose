@@ -1,4 +1,4 @@
-package com.shaban.movietickets.composable
+package com.shaban.movietickets.composable.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

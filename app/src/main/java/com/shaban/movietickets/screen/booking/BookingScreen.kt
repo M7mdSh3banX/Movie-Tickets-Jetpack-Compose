@@ -9,9 +9,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -22,20 +20,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
-import com.shaban.movietickets.composable.BookingButton
-import com.shaban.movietickets.composable.BookingHeader
-import com.shaban.movietickets.composable.MovieCastItem
-import com.shaban.movietickets.composable.MovieDescription
-import com.shaban.movietickets.composable.MovieImage
-import com.shaban.movietickets.composable.MovieName
-import com.shaban.movietickets.composable.MovieTag
-import com.shaban.movietickets.composable.PlayMovie
-import com.shaban.movietickets.composable.RatingText
-import com.shaban.movietickets.composable.RottenTomatoesRatingText
+import com.shaban.movietickets.composable.component.BookingHeader
+import com.shaban.movietickets.composable.component.CustomButton
+import com.shaban.movietickets.composable.component.MovieCastItem
+import com.shaban.movietickets.composable.component.MovieDescription
+import com.shaban.movietickets.composable.component.MovieImage
+import com.shaban.movietickets.composable.component.MovieName
+import com.shaban.movietickets.composable.component.MovieTag
+import com.shaban.movietickets.composable.component.PlayMovie
+import com.shaban.movietickets.composable.component.RatingText
+import com.shaban.movietickets.composable.component.RottenTomatoesRatingText
+import com.shaban.movietickets.composable.spacing.SpacerVertical16
+import com.shaban.movietickets.composable.spacing.SpacerVertical4
 
 @Composable
 fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {
@@ -76,21 +77,25 @@ private fun BookingScreenContent(
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                RatingText(rating = 6.8, text = "IMDb")
-                RottenTomatoesRatingText(rating = 63, text = "Rotten Tomatoes")
-                RatingText(rating = 4.0, text = "IGN")
+                RatingText(rating = state.imdbRating, text = stringResource(R.string.imdb))
+                RottenTomatoesRatingText(
+                    rating = state.rottenTomatoesRating,
+                    text = stringResource(R.string.rotten_tomatoes)
+                )
+                RatingText(rating = state.ignRating, text = stringResource(R.string.ign))
             }
-            MovieName(name = "Fantastic Beasts: The Secrets of Dumbledore")
-            Row(
+            MovieName(name = state.movieName)
+            LazyRow(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.Center,
             ) {
-                MovieTag(name = "Fantasy")
-                MovieTag(name = "Adventure")
+                items(state.movieTags) { tag ->
+                    MovieTag(name = tag)
+                }
             }
-            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            SpacerVertical4()
             LazyRow(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -100,17 +105,17 @@ private fun BookingScreenContent(
                     MovieCastItem(data = image)
                 }
             }
-            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            SpacerVertical4()
             MovieDescription(description = state.movieDescription)
-            Spacer(modifier = Modifier.padding(vertical = 4.dp))
+            SpacerVertical4()
             Spacer(modifier = Modifier.weight(1F))
-            BookingButton(
-                buttonText = "Booking",
+            CustomButton(
+                buttonText = stringResource(R.string.booking),
                 painter = painterResource(id = R.drawable.booking_icon),
-                onClickBooking = { /*TODO*/ },
+                onClickBooking = { },
                 modifier = Modifier
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            SpacerVertical16()
         }
     }
 }
