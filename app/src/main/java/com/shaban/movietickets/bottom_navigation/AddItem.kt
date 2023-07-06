@@ -25,7 +25,7 @@ import androidx.navigation.NavHostController
 import com.shaban.movietickets.ui.theme.PrimaryColor
 
 @Composable
-fun RowScope.AddItem(
+internal fun RowScope.AddItem(
     screen: BottomNavigation,
     currentDestination: NavDestination?,
     navController: NavHostController

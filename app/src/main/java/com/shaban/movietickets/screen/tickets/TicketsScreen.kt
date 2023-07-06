@@ -30,6 +30,7 @@ import com.shaban.movietickets.composable.component.CustomButton
 import com.shaban.movietickets.composable.component.IconWithTransparentBackground
 import com.shaban.movietickets.composable.component.TicketDateItemChip
 import com.shaban.movietickets.composable.component.TicketDetails
+import com.shaban.movietickets.composable.component.TicketSeatChip
 import com.shaban.movietickets.composable.component.TicketSeatState
 import com.shaban.movietickets.composable.component.TicketTimeItemChip
 import com.shaban.movietickets.composable.spacing.SpacerVertical16
@@ -71,6 +72,11 @@ fun TicketsContent(
             IconWithTransparentBackground(icon = R.drawable.exit_icon)
             SpacerVertical8()
             CinemaCover(painter = painterResource(id = R.drawable.cinema_cover))
+
+            TicketSeatChip()
+            TicketSeatChip()
+            TicketSeatChip()
+
             Spacer(modifier = Modifier.weight(1F))
             Row(
                 modifier = Modifier.fillMaxWidth(),
