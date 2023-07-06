@@ -11,12 +11,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.shaban.movietickets.bottom_navigation.BottomNavGraph
 import com.shaban.movietickets.bottom_navigation.BottomNavigationBar
+import com.shaban.movietickets.screen.tickets.TicketsScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieTicketsApp() {
-    val navController = rememberNavController()
+    /*val navController = rememberNavController()
 
     Scaffold(
         //modifier = Modifier.fillMaxSize(),
@@ -27,5 +28,7 @@ fun MovieTicketsApp() {
             .padding(it)) {
             BottomNavGraph(navController = navController)
         }
-    }
+    }*/
+
+    TicketsScreen()
 }
