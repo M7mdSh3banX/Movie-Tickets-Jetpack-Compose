@@ -15,6 +15,9 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     init {
         getMovieImages()
         getMovieChips()
+        getMovieName()
+        getMovieDuration()
+        getMovieTags()
     }
 
     private fun getMovieImages() {
@@ -51,5 +54,25 @@ class HomeViewModel @Inject constructor() : ViewModel() {
             }
             currentState.copy(movieChip = updatedDates)
         }
+    }
+
+    private fun getMovieName() {
+        _state.update {
+            it.copy(
+                movieName = "Fantastic Beasts: The Secrets of Dumbledore"
+            )
+        }
+    }
+
+    private fun getMovieDuration() {
+        _state.update {
+            it.copy(
+                movieDuration = "2h 23m"
+            )
+        }
+    }
+
+    private fun getMovieTags() {
+        _state.update { it.copy(movieTag = listOf("Fantasy", "Adventure")) }
     }
 }

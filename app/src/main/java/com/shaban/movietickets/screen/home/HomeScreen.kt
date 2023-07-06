@@ -4,12 +4,13 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
@@ -27,6 +28,7 @@ import com.shaban.movietickets.composable.component.MovieDurationComponent
 import com.shaban.movietickets.composable.component.MovieImageBackground
 import com.shaban.movietickets.composable.component.MovieName
 import com.shaban.movietickets.composable.component.MovieTag
+import com.shaban.movietickets.composable.spacing.SpacerVertical16
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -62,15 +64,16 @@ fun HomeContent(
                 color = Color.White
             )
             Column {
-                Spacer(modifier = Modifier.height(16.dp))
-                Row(
+                SpacerVertical16()
+                LazyRow(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center,
                 ) {
-                    CustomChip(movieChip = state.movieChip[0], onClick = onClickMovieChip)
-                    CustomChip(movieChip = state.movieChip[1], onClick = onClickMovieChip)
+                    items(state.movieChip) { movieChip ->
+                        CustomChip(movieChip = movieChip, onClick = onClickMovieChip)
+                    }
                 }
-                Spacer(modifier = Modifier.height(16.dp))
+                SpacerVertical16()
                 MovieCardPager(data = state.movieImages, state = pagerState)
             }
         }
@@ -80,16 +83,17 @@ fun HomeContent(
                 .weight(0.4f),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            MovieDurationComponent(movieDuration = "2h 23m", textColor = Color.Black)
-            MovieName(name = "Fantastic Beasts: The Secrets of Dumbledore")
-            Row(
+            MovieDurationComponent(movieDuration = state.movieDuration, textColor = Color.Black)
+            MovieName(name = state.movieName)
+            LazyRow(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 16.dp, vertical = 4.dp),
                 horizontalArrangement = Arrangement.Center,
             ) {
-                MovieTag(name = "Fantasy")
-                MovieTag(name = "Adventure")
+                items(state.movieTag) { movieTag ->
+                    MovieTag(name = movieTag)
+                }
             }
         }
     }
