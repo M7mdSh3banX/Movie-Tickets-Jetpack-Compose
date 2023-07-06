@@ -14,6 +14,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
 
     init {
         getMovieImages()
+        getMovieChips()
     }
 
     private fun getMovieImages() {
@@ -25,6 +26,30 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     "https://i.pinimg.com/564x/24/ce/49/24ce4933b8fbec020cb7ff0f23b1cf62.jpg"
                 )
             )
+        }
+    }
+
+    private fun getMovieChips() {
+        _state.update {
+            it.copy(
+                movieChip = listOf(
+                    MovieChipUiState(title = "Coming Soon", chipState = true),
+                    MovieChipUiState(title = "Now Showing", chipState = false)
+                )
+            )
+        }
+    }
+
+    fun onClickDateChip(selectedChip: MovieChipUiState) {
+        _state.update { currentState ->
+            val updatedDates = currentState.movieChip.map { date ->
+                if (date == selectedChip) {
+                    date.copy(chipState = true)
+                } else {
+                    date.copy(chipState = false)
+                }
+            }
+            currentState.copy(movieChip = updatedDates)
         }
     }
 }

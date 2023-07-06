@@ -11,6 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.rememberNavController
 import com.shaban.movietickets.bottom_navigation.BottomNavGraph
 import com.shaban.movietickets.bottom_navigation.BottomNavigationBar
+import com.shaban.movietickets.screen.home.HomeScreen
 import com.shaban.movietickets.screen.tickets.TicketsScreen
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -30,5 +31,5 @@ fun MovieTicketsApp() {
         }
     }*/
 
-    TicketsScreen()
+    HomeScreen()
 }

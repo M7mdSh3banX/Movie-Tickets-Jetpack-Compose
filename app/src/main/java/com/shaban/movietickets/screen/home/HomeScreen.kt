@@ -27,6 +27,7 @@ import com.shaban.movietickets.composable.MovieDurationComponent
 import com.shaban.movietickets.composable.MovieImageBackground
 import com.shaban.movietickets.composable.MovieName
 import com.shaban.movietickets.composable.MovieTag
+import com.shaban.movietickets.screen.tickets.TicketDateChipUiState
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -34,14 +35,19 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     val pagerState = rememberPagerState(initialPage = 1)
 
-    HomeContent(state = state, pagerState = pagerState)
+    HomeContent(
+        state = state,
+        pagerState = pagerState,
+        onClickMovieChip = viewModel::onClickDateChip
+    )
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun HomeContent(
     state: HomeUiState,
-    pagerState: PagerState
+    pagerState: PagerState,
+    onClickMovieChip: (MovieChipUiState) -> Unit
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -62,8 +68,8 @@ fun HomeContent(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center,
                 ) {
-                    CustomChip(text = "Coming Soon", onSelectedChipChanged = {})
-                    CustomChip(text = "Now Showing", onSelectedChipChanged = {}, isSelected = true)
+                    CustomChip(movieChip = state.movieChip[0], onClick = onClickMovieChip)
+                    CustomChip(movieChip = state.movieChip[1], onClick = onClickMovieChip)
                 }
                 Spacer(modifier = Modifier.height(16.dp))
                 MovieCardPager(data = state.movieImages, state = pagerState)
