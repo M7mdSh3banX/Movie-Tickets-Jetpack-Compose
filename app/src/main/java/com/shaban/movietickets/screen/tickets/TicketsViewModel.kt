@@ -40,13 +40,16 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
         _state.update {
             it.copy(
                 ticketTime = listOf(
-                    TicketTimeChipUiState(time = "10:00", chipState = true),
+                    TicketTimeChipUiState(time = "10:00", chipState = false),
                     TicketTimeChipUiState(time = "12:30", chipState = false),
                     TicketTimeChipUiState(time = "15:30", chipState = false),
                     TicketTimeChipUiState(time = "18:30", chipState = false),
                     TicketTimeChipUiState(time = "21:30", chipState = false),
                     TicketTimeChipUiState(time = "22:00", chipState = false),
                     TicketTimeChipUiState(time = "00:00", chipState = false),
+                    TicketTimeChipUiState(time = "01:00", chipState = false),
+                    TicketTimeChipUiState(time = "02:00", chipState = false),
+                    TicketTimeChipUiState(time = "03:00", chipState = false),
                 )
             )
         }
@@ -62,6 +65,19 @@ class TicketsViewModel @Inject constructor() : ViewModel() {
                 }
             }
             currentState.copy(ticketDate = updatedDates)
+        }
+    }
+
+    fun onClickTimeChip(selectedDate: TicketTimeChipUiState) {
+        _state.update { currentState ->
+            val updatedDates = currentState.ticketTime.map { time ->
+                if (time == selectedDate) {
+                    time.copy(chipState = !time.chipState)
+                } else {
+                    time.copy(chipState = false)
+                }
+            }
+            currentState.copy(ticketTime = updatedDates)
         }
     }
 }

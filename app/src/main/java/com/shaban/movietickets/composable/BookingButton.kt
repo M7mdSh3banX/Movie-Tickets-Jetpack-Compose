@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -28,8 +29,8 @@ fun BookingButton(
 ) {
     Button(
         onClick = onClickBooking,
+        shape = MaterialTheme.shapes.extraLarge,
         colors = ButtonDefaults.buttonColors(PrimaryColor),
-        modifier = modifier.padding(bottom = 16.dp)
     ) {
         Icon(
             painter = painter,
@@ -41,7 +42,7 @@ fun BookingButton(
             text = buttonText,
             color = Color.White,
             fontWeight = FontWeight.Normal,
-            fontSize = 16.sp,
+            fontSize = 18.sp,
             modifier = modifier
         )
     }
