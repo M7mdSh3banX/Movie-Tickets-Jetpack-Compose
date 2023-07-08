@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.composable.component
+package com.shaban.movietickets.ui.composable.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -20,7 +20,7 @@ fun BookingHeader(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(16.dp),
+            .padding(top = 28.dp, bottom = 16.dp, start = 16.dp, end = 16.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = CenterVertically
     ) {

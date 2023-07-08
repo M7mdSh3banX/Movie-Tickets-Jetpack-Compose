@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.composable.component
+package com.shaban.movietickets.ui.composable.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -6,14 +6,13 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlurEffect
+import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
 
 @Composable
 fun MovieImageBackground(
@@ -21,7 +20,9 @@ fun MovieImageBackground(
     modifier: Modifier = Modifier,
     color: Color
 ) {
-    Box(modifier = Modifier.background(Color.White)) {
+    Box(modifier = Modifier
+        .background(Color.White)
+        .blur(24.dp)) {
         val painter = rememberAsyncImagePainter(model = data)
 
         Image(

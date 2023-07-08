@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.composable.component
+package com.shaban.movietickets.ui.composable.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.clickable

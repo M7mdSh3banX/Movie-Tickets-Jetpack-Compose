@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.composable.component
+package com.shaban.movietickets.ui.composable.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.size

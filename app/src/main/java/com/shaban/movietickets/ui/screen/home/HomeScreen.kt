@@ -20,8 +20,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.shaban.movietickets.ui.screen.composable.component.*
-import com.shaban.movietickets.ui.screen.composable.spacing.*
+import com.shaban.movietickets.ui.composable.component.*
+import com.shaban.movietickets.ui.composable.spacing.*
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
@@ -56,7 +56,7 @@ fun HomeContent(
                 data = state.movieImages[pagerState.currentPage],
                 color = Color.White
             )
-            Column {
+            Column(modifier = Modifier.padding(top = 28.dp)) {
                 SpacerVertical16()
                 LazyRow(
                     modifier = Modifier.fillMaxWidth(),

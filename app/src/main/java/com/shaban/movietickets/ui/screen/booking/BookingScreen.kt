@@ -27,8 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
-import com.shaban.movietickets.ui.screen.composable.component.*
-import com.shaban.movietickets.ui.screen.composable.spacing.*
+import com.shaban.movietickets.ui.composable.component.*
+import com.shaban.movietickets.ui.composable.spacing.*
 
 @Composable
 fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {

@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.composable.spacing
+package com.shaban.movietickets.ui.composable.spacing
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -7,4 +7,4 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun SpacerVertical4() = Spacer(modifier = Modifier.height(4.dp))
+fun SpacerVertical24() = Spacer(modifier = Modifier.height(24.dp))
