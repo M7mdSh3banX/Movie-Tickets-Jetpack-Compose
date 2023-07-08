@@ -27,8 +27,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.shaban.movietickets.R
-import com.shaban.movietickets.ui.composable.component.*
-import com.shaban.movietickets.ui.composable.spacing.*
+import com.shaban.movietickets.ui.composable.component.BookingHeader
+import com.shaban.movietickets.ui.composable.component.CustomButton
+import com.shaban.movietickets.ui.composable.component.MovieCastItem
+import com.shaban.movietickets.ui.composable.component.MovieDescription
+import com.shaban.movietickets.ui.composable.component.MovieImage
+import com.shaban.movietickets.ui.composable.component.MovieName
+import com.shaban.movietickets.ui.composable.component.MovieTag
+import com.shaban.movietickets.ui.composable.component.PlayMovie
+import com.shaban.movietickets.ui.composable.component.RatingText
+import com.shaban.movietickets.ui.composable.component.RottenTomatoesRatingText
+import com.shaban.movietickets.ui.composable.spacing.SpacerVertical16
+import com.shaban.movietickets.ui.composable.spacing.SpacerVertical4
 
 @Composable
 fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {
@@ -58,7 +68,7 @@ private fun BookingScreenContent(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(450.dp)
+                    .height(500.dp)
                     .background(
                         shape = AbsoluteRoundedCornerShape(topLeft = 32.dp, topRight = 32.dp),
                         color = White

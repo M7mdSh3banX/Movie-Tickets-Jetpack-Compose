@@ -1,5 +1,8 @@
 package com.shaban.movietickets.ui.bottom_navigation
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +16,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,23 +43,34 @@ fun BottomNavigationBar(navController: NavHostController) {
 
     val navStackByEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navStackByEntry?.destination
+    // State of bottomBar, set state to false, if current page route is "tickets screen"
+    val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
 
-    Row(
-        modifier = Modifier
-            .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 16.dp)
-            .background(Transparent)
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        screens.forEach { screen ->
-            AddItem(
-                screen = screen,
-                currentDestination = currentDestination,
-                navController = navController
-            )
+    bottomBarState.value = navStackByEntry?.destination?.route != BottomNavigation.Ticket.route
+
+    AnimatedVisibility(
+        visible = bottomBarState.value,
+        enter = slideInVertically(initialOffsetY = { it }),
+        exit = slideOutVertically(targetOffsetY = { it }),
+        content = {
+            Row(
+                modifier = Modifier
+                    .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 16.dp)
+                    .background(Transparent)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                screens.forEach { screen ->
+                    AddItem(
+                        screen = screen,
+                        currentDestination = currentDestination,
+                        navController = navController
+                    )
+                }
+            }
         }
-    }
+    )
 }
 
 @Composable
