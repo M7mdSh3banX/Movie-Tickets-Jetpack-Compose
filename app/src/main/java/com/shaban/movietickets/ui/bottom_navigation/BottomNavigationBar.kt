@@ -24,12 +24,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.shaban.movietickets.R
 import com.shaban.movietickets.ui.theme.PrimaryColor
 
 @Composable
@@ -46,7 +48,19 @@ fun BottomNavigationBar(navController: NavHostController) {
     // State of bottomBar, set state to false, if current page route is "tickets screen"
     val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
 
-    bottomBarState.value = navStackByEntry?.destination?.route != BottomNavigation.Ticket.route
+    when (navStackByEntry?.destination?.route) {
+        BottomNavigation.Ticket.route -> {
+            bottomBarState.value = false
+        }
+
+        "MovieDetailsRoute" -> {
+            bottomBarState.value = false
+        }
+
+        else -> {
+            bottomBarState.value = true
+        }
+    }
 
     AnimatedVisibility(
         visible = bottomBarState.value,
@@ -114,7 +128,7 @@ private fun RowScope.AddItem(
         ) {
             Icon(
                 painter = painterResource(id = screen.icon),
-                contentDescription = "icon",
+                contentDescription = stringResource(R.string.icon),
                 tint = contentColor
             )
         }
