@@ -1,6 +1,6 @@
-package com.shaban.movietickets.ui.screen.booking
+package com.shaban.movietickets.ui.screen.movie_details
 
-data class BookingUiState(
+data class MovieDetailsUiState(
     val movieImage: String = "",
     val movieDuration: String = "",
     val imdbRating: Double = 0.0,

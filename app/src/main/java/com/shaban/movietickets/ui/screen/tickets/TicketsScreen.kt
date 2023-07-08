@@ -24,14 +24,25 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.shaban.movietickets.R
-import com.shaban.movietickets.ui.composable.component.*
-import com.shaban.movietickets.ui.composable.spacing.*
+import com.shaban.movietickets.ui.composable.component.CinemaCover
+import com.shaban.movietickets.ui.composable.component.CustomButton
+import com.shaban.movietickets.ui.composable.component.IconWithTransparentBackground
+import com.shaban.movietickets.ui.composable.component.TicketDateItemChip
+import com.shaban.movietickets.ui.composable.component.TicketDetails
+import com.shaban.movietickets.ui.composable.component.TicketSeatChip
+import com.shaban.movietickets.ui.composable.component.TicketSeatState
+import com.shaban.movietickets.ui.composable.component.TicketTimeItemChip
+import com.shaban.movietickets.ui.composable.spacing.SpacerVertical16
+import com.shaban.movietickets.ui.composable.spacing.SpacerVertical24
+import com.shaban.movietickets.ui.composable.spacing.SpacerVertical8
 import com.shaban.movietickets.ui.theme.PrimaryColor
 import com.shaban.movietickets.ui.theme.SeatColor
 
 @Composable
 fun TicketsScreen(
+    navController: NavHostController,
     viewModel: TicketsViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
@@ -39,7 +50,8 @@ fun TicketsScreen(
     TicketsContent(
         state = state,
         onClickDateChip = viewModel::onClickDateChip,
-        onClickTimeChip = viewModel::onClickTimeChip
+        onClickTimeChip = viewModel::onClickTimeChip,
+        onClickExit = { navController.navigateUp() }
     )
 }
 
@@ -48,6 +60,7 @@ fun TicketsContent(
     state: TicketsUiState,
     onClickDateChip: (TicketDateChipUiState) -> Unit,
     onClickTimeChip: (TicketTimeChipUiState) -> Unit,
+    onClickExit: () -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -60,7 +73,7 @@ fun TicketsContent(
                 .fillMaxWidth()
                 .padding(top = 28.dp, bottom = 16.dp, start = 16.dp, end = 16.dp),
         ) {
-            IconWithTransparentBackground(icon = R.drawable.exit_icon)
+            IconWithTransparentBackground(icon = R.drawable.exit_icon, onClick = onClickExit)
             SpacerVertical8()
             CinemaCover(painter = painterResource(id = R.drawable.cinema_cover))
 
@@ -135,5 +148,5 @@ fun TicketsContent(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewTicketsScreen() {
-    TicketsScreen()
+
 }

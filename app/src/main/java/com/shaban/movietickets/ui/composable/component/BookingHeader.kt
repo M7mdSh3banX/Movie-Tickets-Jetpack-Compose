@@ -15,7 +15,8 @@ import com.shaban.movietickets.R
 @Composable
 fun BookingHeader(
     movieDuration: String,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClickExit: () -> Unit
 ) {
     Row(
         modifier = modifier
@@ -24,7 +25,7 @@ fun BookingHeader(
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = CenterVertically
     ) {
-        IconWithTransparentBackground(icon = R.drawable.exit_icon)
+        IconWithTransparentBackground(icon = R.drawable.exit_icon, onClick = onClickExit)
         MovieDurationComponent(movieDuration = movieDuration, textColor = Color.White)
     }
 }
@@ -32,5 +33,5 @@ fun BookingHeader(
 @Preview()
 @Composable
 fun PreviewHeader() {
-    BookingHeader(movieDuration = "2h 23m")
+
 }

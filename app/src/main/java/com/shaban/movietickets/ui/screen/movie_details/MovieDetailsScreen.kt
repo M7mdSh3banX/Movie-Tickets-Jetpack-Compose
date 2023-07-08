@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.booking
+package com.shaban.movietickets.ui.screen.movie_details
 
 import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import androidx.compose.foundation.background
@@ -26,6 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.shaban.movietickets.R
 import com.shaban.movietickets.ui.composable.component.BookingHeader
 import com.shaban.movietickets.ui.composable.component.CustomButton
@@ -39,16 +40,26 @@ import com.shaban.movietickets.ui.composable.component.RatingText
 import com.shaban.movietickets.ui.composable.component.RottenTomatoesRatingText
 import com.shaban.movietickets.ui.composable.spacing.SpacerVertical16
 import com.shaban.movietickets.ui.composable.spacing.SpacerVertical4
+import com.shaban.movietickets.ui.screen.tickets.navigateToTickets
 
 @Composable
-fun BookingScreen(viewModel: BookingViewModel = hiltViewModel()) {
+fun MovieDetailsScreen(
+    navController: NavHostController,
+    viewModel: MovieDetailsViewModel = hiltViewModel()
+) {
     val state by viewModel.state.collectAsState()
-    BookingScreenContent(state = state)
+    MovieDetailsScreenContent(
+        state = state,
+        onCLickNext = { navController.navigateUp() },
+        onClickBooking = { navController.navigateToTickets() }
+    )
 }
 
 @Composable
-private fun BookingScreenContent(
-    state: BookingUiState
+private fun MovieDetailsScreenContent(
+    state: MovieDetailsUiState,
+    onCLickNext: () -> Unit,
+    onClickBooking: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -59,7 +70,7 @@ private fun BookingScreenContent(
                 .height(420.dp),
         ) {
             MovieImage(data = state.movieImage)
-            BookingHeader(movieDuration = state.movieDuration)
+            BookingHeader(movieDuration = state.movieDuration, onClickExit = onCLickNext)
             Box(modifier = Modifier.align(Alignment.Center)) {
                 PlayMovie {}
             }
@@ -117,7 +128,7 @@ private fun BookingScreenContent(
                 CustomButton(
                     buttonText = stringResource(R.string.booking),
                     painter = painterResource(id = R.drawable.booking_icon),
-                    onClickBooking = { },
+                    onClickBooking = onClickBooking,
                     modifier = Modifier
                 )
                 SpacerVertical16()
@@ -128,6 +139,6 @@ private fun BookingScreenContent(
 
 @Preview(showBackground = true, showSystemUi = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun PreviewBookingScreen() {
-    BookingScreen()
+fun PreviewMovieDetailsScreen() {
+
 }

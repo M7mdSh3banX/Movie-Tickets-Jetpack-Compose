@@ -20,19 +20,26 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
+import com.shaban.movietickets.ui.bottom_navigation.BottomNavigation
 import com.shaban.movietickets.ui.composable.component.*
 import com.shaban.movietickets.ui.composable.spacing.*
+import com.shaban.movietickets.ui.screen.movie_details.navigateToMovieDetails
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
+fun HomeScreen(
+    navController: NavHostController,
+    viewModel: HomeViewModel = hiltViewModel()
+) {
     val state by viewModel.state.collectAsState()
     val pagerState = rememberPagerState(initialPage = 1)
 
     HomeContent(
         state = state,
         pagerState = pagerState,
-        onClickMovieChip = viewModel::onClickDateChip
+        onClickMovieChip = viewModel::onClickDateChip,
+        onClickMovie = { navController.navigateToMovieDetails() }
     )
 }
 
@@ -41,7 +48,8 @@ fun HomeScreen(viewModel: HomeViewModel = hiltViewModel()) {
 fun HomeContent(
     state: HomeUiState,
     pagerState: PagerState,
-    onClickMovieChip: (MovieChipUiState) -> Unit
+    onClickMovieChip: (MovieChipUiState) -> Unit,
+    onClickMovie: () -> Unit
 ) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -67,7 +75,11 @@ fun HomeContent(
                     }
                 }
                 SpacerVertical16()
-                MovieCardPager(data = state.movieImages, state = pagerState)
+                MovieCardPager(
+                    data = state.movieImages,
+                    state = pagerState,
+                    onClickMovie = onClickMovie
+                )
             }
         }
         Column(
@@ -95,5 +107,5 @@ fun HomeContent(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun PreviewHomeScreen() {
-    HomeScreen()
+
 }

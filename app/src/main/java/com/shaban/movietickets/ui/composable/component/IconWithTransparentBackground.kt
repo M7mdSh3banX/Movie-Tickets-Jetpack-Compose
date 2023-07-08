@@ -16,10 +16,11 @@ import com.shaban.movietickets.R
 @Composable
 fun IconWithTransparentBackground(
     modifier: Modifier = Modifier,
-    icon: Int
+    icon: Int,
+    onClick: () -> Unit
 ) {
     IconButton(
-        onClick = { },
+        onClick = { onClick() },
         modifier = modifier
             .background(
                 shape = CircleShape,
@@ -39,5 +40,5 @@ fun IconWithTransparentBackground(
 @Preview
 @Composable
 fun PreviewIconWithTransparentBackground() {
-    IconWithTransparentBackground(icon = R.drawable.exit_icon)
+    IconWithTransparentBackground(icon = R.drawable.exit_icon, onClick = { })
 }

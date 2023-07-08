@@ -1,4 +1,4 @@
-package com.shaban.movietickets.ui.screen.booking
+package com.shaban.movietickets.ui.screen.movie_details
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -8,8 +8,8 @@ import kotlinx.coroutines.flow.update
 import javax.inject.Inject
 
 @HiltViewModel
-class BookingViewModel @Inject constructor() : ViewModel() {
-    private val _state = MutableStateFlow(BookingUiState())
+class MovieDetailsViewModel @Inject constructor() : ViewModel() {
+    private val _state = MutableStateFlow(MovieDetailsUiState())
     val state = _state.asStateFlow()
 
     init {

@@ -4,9 +4,9 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.shaban.movietickets.ui.screen.booking.BookingScreen
-import com.shaban.movietickets.ui.screen.home.HomeScreen
-import com.shaban.movietickets.ui.screen.tickets.TicketsScreen
+import com.shaban.movietickets.ui.screen.home.homeRoute
+import com.shaban.movietickets.ui.screen.movie_details.movieDetailsRoute
+import com.shaban.movietickets.ui.screen.tickets.ticketsRoute
 
 @Composable
 fun BottomNavGraph(navController: NavHostController) {
@@ -14,17 +14,10 @@ fun BottomNavGraph(navController: NavHostController) {
         navController = navController,
         startDestination = BottomNavigation.Home.route
     ) {
-        composable(route = BottomNavigation.Home.route) {
-            HomeScreen()
-        }
-        composable(route = BottomNavigation.Search.route) {
-            BookingScreen()
-        }
-        composable(route = BottomNavigation.Ticket.route) {
-            TicketsScreen()
-        }
-        composable(route = BottomNavigation.Profile.route) {
-
-        }
+        homeRoute(navController)
+        composable(route = BottomNavigation.Search.route) { }
+        ticketsRoute(navController)
+        composable(route = BottomNavigation.Profile.route) { }
+        movieDetailsRoute(navController)
     }
 }
