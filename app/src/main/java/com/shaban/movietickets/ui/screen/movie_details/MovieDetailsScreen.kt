@@ -67,7 +67,7 @@ private fun MovieDetailsScreenContent(
         Box(
             modifier = Modifier
                 .align(Alignment.TopCenter)
-                .height(420.dp),
+                .height(500.dp),
         ) {
             MovieImage(data = state.movieImage)
             BookingHeader(movieDuration = state.movieDuration, onClickExit = onCLickNext)
